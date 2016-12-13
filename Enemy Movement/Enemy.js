@@ -1,10 +1,10 @@
-// BOOL FOR WHETHER ENEMY IS ALIVE OR NOT
+// boolean for whether the enemy is alive or not
 var enemyAlive = true;
 var timerValue =0;
-// MINIMUM AND MAXIMUM VALUES TO BE USED FOR SPAWNING PURPOSES
+// mimimum and maximum values to be used for spawning purposes
 var min = 1;
 var max= 3;
-// DEFAULT SPEED
+// default speed
 var speed = 5;
 
 
@@ -24,7 +24,9 @@ Enemy.prototype.draw=function(ctx) {
 	ctx.fillRect(this.x, this.y, 100, 100);
 };
 
-// METHOD TO MAKE ENEMY MOVE
+/** 
+ * Method the make the enemy move
+ */
 Enemy.prototype.Move=function(e) 
 {
 	this.y += speed;

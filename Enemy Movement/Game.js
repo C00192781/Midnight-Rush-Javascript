@@ -1,3 +1,4 @@
+// enemy array
 var enemies = [];
 
 var isAlive = true;
@@ -14,6 +15,10 @@ function Game(){
 	
 }
 
+/*
+ * Initializes the game
+ * and our array of enemies
+ */
 Game.prototype.init=function()
 {
 	console.log('Initiliasing Game');
@@ -21,18 +26,19 @@ Game.prototype.init=function()
 
 	for (var i=0; i < enemies.length; i++)
 	{
-		//Spawns(); //??
-
+		// spawn initial enemies off of screen
 		enemies[i] = new Enemy(3000, 1111, rgb(255,255,255));
 		enemies[i].enemyAlive = true;
 		console.log(enemies.length, "length");
 		timer++;
 	}
-
 	console.log(x,y);
 }
 
-
+/*
+ * Constantly updates the game 
+ * 
+ */
 Game.prototype.update=function()
 {
 
@@ -46,6 +52,7 @@ Game.prototype.update=function()
 		Spawns();
 		Waves();
 
+		// if the timer is greater than the timerValue from Waves()
 		if (timer >= timerValue)
 		{
 			if (enemies[i].enemyAlive == false)
@@ -59,7 +66,7 @@ Game.prototype.update=function()
 
 		if (enemies[i].enemyAlive == true)
 		{
-			if (enemies[i].y > 2100)
+			if (enemies[i].y > 2100) // if the enemy goes beyond a certain point
 			{
 				enemies[i].enemyAlive = false;
 			}	
@@ -77,22 +84,26 @@ Game.prototype.update=function()
 	window.requestAnimationFrame(app.myGame.update);
 }
 
-
+/*
+ * A function used for the randomly spawning 
+ * enemies between 3 different positions.
+ */
 function Spawns()
 {
 	randomSpawn = Math.floor(Math.random() * (max - min + 1)) + min;
+		// Position 1
 		if (randomSpawn == 1)
 		{
 			x = window.innerWidth * Math.abs(0.1);
 			y = -300;
 		}
-
+		// Position 2
 		if (randomSpawn == 2)
 		{
 			x = window.innerWidth * Math.abs(0.45);
 			y = -300;
 		}
-
+		// Position 3
 		if (randomSpawn == 3)
 		{
 			x = window.innerWidth * Math.abs(0.8);
@@ -100,19 +111,26 @@ function Spawns()
 		}	
 }
 
+/*
+ * A function used for spawning 
+ * enemies at 3 random spawn intervals.
+ */
 function Waves() 
 {
 	randomWave = Math.floor(Math.random() * (max - min + 1)) + min;
 	if (randomWave == 1)
 	{
+		// Time Interval 1
 		timerValue = 100;
 	}
 	if (randomWave == 2)
 	{
+		// Time Interval 2
 		timerValue = 200;
 	}
 	if (randomWave == 3)
 	{
+		// Time Interval 3
 		timerValue = 300;
 	}	
 }
