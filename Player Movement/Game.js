@@ -1,3 +1,4 @@
+// array of points that the player can move between 
 var points = [];
 points[0] = 120;
 points[1] = 450;
@@ -9,6 +10,11 @@ function Game(){
 	
 }
 
+/*
+ * Initializes the game, 
+ * spawns our player at the middle point,
+ * draws player
+ */
 Game.prototype.init=function()
 {
 	console.log('Initiliasing Game');
@@ -26,6 +32,10 @@ Game.prototype.init=function()
 	console.log('Initiliasing Player');	
 }
 
+/*
+ * Constantly updates the game 
+ * 
+ */
 Game.prototype.update=function()
 {
 
@@ -33,6 +43,7 @@ Game.prototype.update=function()
 
 	console.log(app.plyr.x, "player x pos");
 	
+	// this is what is used to move to player
 	app.plyr.PlayerMove();
 
 	//// FOR WHEN PLAYER IS MOVING LEFT
@@ -40,6 +51,7 @@ Game.prototype.update=function()
 	{
 		if (app.plyr.x == points[0] || app.plyr.x == points[1] || app.plyr.x == points[2])
 		{
+			// moves to point[X] and the player is halted 
 			app.plyr.speed = 0;
 		}
 	}
@@ -49,6 +61,7 @@ Game.prototype.update=function()
 	{
 		if (app.plyr.x == points[0] || app.plyr.x == points[1] || app.plyr.x == points[2])
 		{
+			// moves to point[X] and the player is halted 
 			app.plyr.speed = 0;
 		}
 	}
@@ -57,7 +70,7 @@ Game.prototype.update=function()
 	console.log (app.plyr.targetLeft, "LEFT");
 	console.log (app.plyr.targetRight, "RIGHT");
 
-	
+	// draws player
 	app.plyr.draw(ctx);
 
 	window.requestAnimationFrame(app.myGame.update);

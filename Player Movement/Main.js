@@ -13,7 +13,9 @@ var x;
 var y;
 
 
-
+/*
+ * This initializes the game and draws the background.
+ */
 function main()
 {
 	var tTest = new TouchTest();
